@@ -2,5 +2,15 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "mydb": {
+    "host": "ds157459.mlab.com",
+    "port": 57459,
+    "url": "mongodb://root:root@ds157459.mlab.com:57459/entwined",
+    "database": "entwined",
+    "password": "root",
+    "name": "mydb",
+    "user": "root",
+    "connector": "mongodb"
   }
 }
