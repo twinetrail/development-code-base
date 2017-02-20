@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
 
   callRequest(): void{
 
-  	this.apiService.getRequest().subscribe(response => console.log("the response is" + response[0].city));
+  	this.apiService.getRequest().subscribe(response => console.log("the response is " + response[0].first_name));
   }
 }
+
