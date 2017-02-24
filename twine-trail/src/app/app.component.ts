@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 import { AppService } from './app.service';
 
 @Component({
@@ -15,7 +14,7 @@ export class AppComponent implements OnInit {
   constructor(private apiService: AppService){}
 
   ngOnInit(){
-  	this.callRequest();
+  	// this.callRequest();
   }
 
   callRequest(): void{
