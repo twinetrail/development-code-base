@@ -11,7 +11,7 @@ export class AppService {
   headers = new Headers({'Content-Type':'application/json'});
 
   getRequest(): Observable<any> {
-  	let url = 'http://0.0.0.0:3000/api/owners';
+  	let url = 'http://0.0.0.0:3000/api/Client';
   	return this.http.get(url,{headers: this.headers})
   		.map(response => response.json())
   		.catch(err => Observable.throw(err));

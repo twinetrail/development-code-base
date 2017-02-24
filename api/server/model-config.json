@@ -32,7 +32,7 @@
     "dataSource": "mydb",
     "public": false
   },
-  "owner": {
+  "Client": {
     "dataSource": "mydb",
     "public": true
   }
