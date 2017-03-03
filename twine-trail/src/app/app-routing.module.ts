@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 export const appRoutes: Routes = [
-	{ path: '', redirectTo: '/user/login', pathMatch: 'full' }
+	{ path: 'welcome', component: WelcomeComponent },
+	{ path: '', redirectTo: '/welcome', pathMatch: 'full' }
 ];
 @NgModule({
 	imports: [RouterModule.forRoot(appRoutes)],

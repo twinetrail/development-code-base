@@ -1,21 +1,34 @@
-import { Input, Component, OnInit } from '@angular/core';
-import { AbstractControl, Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Input, Component, OnInit }   from '@angular/core';
+import { 
+  AbstractControl, Validators, 
+  FormBuilder, FormGroup, FormControl 
+}                                     from '@angular/forms';
 
-import {User} from '../user';
-import { UserService } from '../user.service';
+import {User}                         from '../user';
+import { UserService }                from '../user.service';
+import { AuthService }                from '../auth.service';
+import { 
+  Router, Routes, 
+  RouterModule 
+}                                     from '@angular/router';
 import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css', '../user.component.css']
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  user: User = new User();
-  alert: boolean = false;
+  successAlert: boolean = false;
+  errorAlert: boolean = false;
 
-  constructor(public fb: FormBuilder, public userService: UserService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private userService: UserService, 
+    private authService: AuthService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
   	this.buildForm();
@@ -25,22 +38,38 @@ export class LoginComponent implements OnInit {
   	this.loginForm = this.fb.group({
   		email: ['',[Validators.required]],
   		password: ['',[Validators.required]],
-  		rememberMe: ['']
   	});
   }
 
   onLogin(): void{
-    let user = this.user;
-    console.log(user);
-    this.userService.loginUser(user.email,user.password).subscribe(response =>{
-      console.log(response);
+    let userCredentials = this.loginForm.value;
+    console.log(userCredentials);
+    this.userService.loginUser(userCredentials.email,userCredentials.password).subscribe(response =>{
+      let user: User = response.user;
+      this.authService.setUser(user);
+      this.authService.setToken(response.id);
+      if(this.authService.getCurrentUser()){
+        this.successAlert = true;
+        this.errorAlert = false;
+        this.router.navigate(['/welcome']);
+      }
+
+    }, err => {
+      this.errorAlert = true;
+      this.successAlert = false;
+      console.log(err);
     });
   	// swal('Hello world!');
-  	this.alert = true;
+   
   }
 
-  closeAlert(): void{
-  	this.alert = false;
+  closeAlert(type: string): void{
+  	if(type === 'success'){
+      this.successAlert = false;
+    }
+    else{
+      this.errorAlert = false;
+    }
   }
 
 }

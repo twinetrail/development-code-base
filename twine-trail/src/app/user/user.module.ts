@@ -7,6 +7,9 @@ import { MaterialModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { UserService } from './user.service';
+import { AuthService } from './auth.service';
+import { RegisterComponent } from './register/register.component';
+import { UserComponent } from './user.component';
 
 @NgModule({
   imports: [
@@ -17,8 +20,11 @@ import { UserService } from './user.service';
     NgbModule.forRoot(),
     MaterialModule.forRoot()
   ],
-  exports: [LoginComponent],
-  declarations: [LoginComponent],
-  providers: [UserService]
+  exports: [],
+  declarations: [LoginComponent, RegisterComponent, UserComponent],
+  providers: [
+    UserService,
+    AuthService
+  ]
 })
 export class UserModule { }
