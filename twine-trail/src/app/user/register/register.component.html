@@ -1,0 +1,78 @@
+<md-card class= "user-card">
+	<md-card-content>
+		<p *ngIf="successAlert">
+		  <ngb-alert type="success" (close)="closeAlert('success')">
+		     You are logged in successfully!! keep Twinning..
+		  </ngb-alert>
+		</p>
+		<p *ngIf="errorAlert">
+		  <ngb-alert type="danger" (close)="closeAlert('error')">
+		     Sorry!! Invalid Credentials..
+		  </ngb-alert>
+		</p>
+		<form [formGroup]="registerForm" class="form-horizontal" (ngSubmit) = "onRegister()">
+			<div class="form-group">
+			<label for="username" class="col-sm-2 control-label">Username</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" formControlName="username" id="username" placeholder="Username" required>
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+			<div class="col-sm-10">
+			  <input type="email" class="form-control" formControlName="email" id="email" placeholder="Email" required>
+			</div>
+		  </div>
+		  <div class="form-group">
+			<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+			<div class="col-sm-10">
+			  <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password" required>
+			</div>
+		  </div>
+		  <div class="form-group">
+				<label for="firstname" class="col-sm-2 control-label">Firstname</label>
+				<div class="col-sm-10">
+				  <input type="text" class="form-control" formControlName="firstname" id="firstname" placeholder="Firstname" required>
+				</div>
+		  </div>
+		  <div class="form-group">
+				<label for="lastname" class="col-sm-2 control-label">Lastname</label>
+				<div class="col-sm-10">
+				  <input type="text" class="form-control" formControlName="lastname" id="lastname" placeholder="Lastname" >
+				</div>
+		  </div>
+		  <div class="form-group">
+				<label for="industry" class="col-sm-2 control-label">Industry</label>
+				<div class="col-sm-10">
+				  <input type="text" class="form-control" formControlName="industry" id="industry" placeholder="Industry" required>
+				</div>
+		  </div>
+		  <div class="form-group">
+				<label for="storeType" class="col-sm-2 control-label">Store Type</label>
+				<div class="col-sm-10">
+				  <input type="text" class="form-control" formControlName="storeType" id="storeType" placeholder="Store Type" required>
+				</div>
+		  </div>
+		  <div class="form-group">
+				<label for="cellNumber" class="col-sm-2 control-label">Cell Number</label>
+				<div class="col-sm-10">
+				  <input type="number" class="form-control" formControlName="cellNumber" id="cellNumber" placeholder="Cell Number" >
+				</div>
+		  </div>
+		  <div class="form-group">
+				<label for="landline" class="col-sm-2 control-label">Telephone</label>
+				<div class="col-sm-10">
+				  <input type="number" class="form-control" formControlName="landline" id="landline" placeholder="Telephone" >
+				</div>
+		  </div>
+
+		  <div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+			  <button type="submit" class="btn btn-primary">Register</button>
+			</div>
+		  </div>
+		</form>
+	</md-card-content>
+	
+	
+</md-card>

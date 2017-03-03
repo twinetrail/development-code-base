@@ -14,7 +14,8 @@
     ]
   },
   "User": {
-    "dataSource": "mydb"
+    "dataSource": "mydb",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "mydb",
